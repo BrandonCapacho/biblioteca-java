@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx/13"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.mycompany.gestion_biblioteca.controller.LibroController"
+            stylesheets="@styles.css"
+            prefWidth="1000" prefHeight="650">
+
+    <!-- ═══ ENCABEZADO ═══ -->
+    <top>
+        <VBox styleClass="header" alignment="CENTER_LEFT" spacing="4">
+            <Label text="📚 Sistema de Gestión de Biblioteca">
+                <font><Font size="22"/></font>
+            </Label>
+            <Label text="Administración del catálogo de libros — Biblioteca Universitaria"
+                   styleClass="header-subtitle"/>
+        </VBox>
+    </top>
+
+    <!-- ═══ PANEL IZQUIERDO: FORMULARIO ═══ -->
+    <left>
+        <VBox styleClass="form-panel" spacing="15" prefWidth="300">
+
+            <!-- Título de sección -->
+            <Label fx:id="lblFormTitulo" text="Registrar Libro" styleClass="form-title"/>
+            <Separator/>
+
+            <!-- Campo: Título -->
+            <VBox spacing="4">
+                <Label text="TÍTULO" styleClass="field-label"/>
+                <TextField fx:id="txtTitulo" promptText="Ej: Cien años de soledad"/>
+            </VBox>
+
+            <!-- Campo: Autor -->
+            <VBox spacing="4">
+                <Label text="AUTOR" styleClass="field-label"/>
+                <TextField fx:id="txtAutor" promptText="Ej: Gabriel García Márquez"/>
+            </VBox>
+
+            <!-- Campo: Año -->
+            <VBox spacing="4">
+                <Label text="AÑO DE PUBLICACIÓN" styleClass="field-label"/>
+                <TextField fx:id="txtAnio" promptText="Ej: 1967"/>
+            </VBox>
+
+            <!-- Campo: Ejemplares -->
+            <VBox spacing="4">
+                <Label text="EJEMPLARES DISPONIBLES" styleClass="field-label"/>
+                <TextField fx:id="txtEjemplares" promptText="Ej: 5"/>
+            </VBox>
+
+            <Separator/>
+
+            <!-- Botones de acción -->
+            <Button text="📥  Registrar Libro" onAction="#registrarLibro"
+                    styleClass="btn-primary" maxWidth="Infinity"/>
+
+            <Button text="✏️  Actualizar Libro" onAction="#actualizarLibro"
+                    styleClass="btn-update" maxWidth="Infinity"/>
+
+            <HBox spacing="10">
+                <Button text="🗑  Eliminar" onAction="#eliminarLibro"
+                        styleClass="btn-danger" HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+                <Button text="🧹  Limpiar" onAction="#limpiarCampos"
+                        styleClass="btn-secondary" HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+            </HBox>
+
+        </VBox>
+    </left>
+
+    <!-- ═══ CENTRO: TABLA DE LIBROS ═══ -->
+    <center>
+        <VBox spacing="0">
+
+            <!-- Barra de búsqueda -->
+            <HBox spacing="10" alignment="CENTER_LEFT" style="-fx-padding: 12 15 12 15; -fx-background-color: #16213e;">
+                <TextField fx:id="txtBusqueda" promptText="🔍 Buscar por título..."
+                           HBox.hgrow="ALWAYS"/>
+                <Button text="Buscar" onAction="#buscarPorTitulo" styleClass="btn-search"/>
+                <Button text="Mostrar Todos" onAction="#mostrarTodos" styleClass="btn-secondary"/>
+            </HBox>
+
+            <!-- Tabla -->
+            <TableView fx:id="tablaLibros" VBox.vgrow="ALWAYS">
+                <placeholder>
+                    <Label text="No hay libros registrados aún. ¡Registre el primero!"/>
+                </placeholder>
+                <columns>
+                    <TableColumn fx:id="colId" text="ID" prefWidth="50" style="-fx-alignment: CENTER;"/>
+                    <TableColumn fx:id="colTitulo" text="Título" prefWidth="250"/>
+                    <TableColumn fx:id="colAutor" text="Autor" prefWidth="200"/>
+                    <TableColumn fx:id="colAnio" text="Año" prefWidth="80" style="-fx-alignment: CENTER;"/>
+                    <TableColumn fx:id="colEjemplares" text="Ejemplares" prefWidth="90" style="-fx-alignment: CENTER;"/>
+                </columns>
+            </TableView>
+
+        </VBox>
+    </center>
+
+    <!-- ═══ BARRA INFERIOR: ESTADO ═══ -->
+    <bottom>
+        <HBox styleClass="bottom-bar" alignment="CENTER_LEFT">
+            <Label fx:id="lblEstado" text="Sistema listo." styleClass="status-label"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>

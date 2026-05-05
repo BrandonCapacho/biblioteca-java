@@ -1,0 +1,7 @@
+com\mycompany\gestion_biblioteca\controller\LibroController.class
+com\mycompany\gestion_biblioteca\model\Libro.class
+com\mycompany\gestion_biblioteca\service\LibroService.class
+module-info.class
+com\mycompany\gestion_biblioteca\App.class
+com\mycompany\gestion_biblioteca\dao\LibroDAO.class
+com\mycompany\gestion_biblioteca\database\DatabaseConnection.class
